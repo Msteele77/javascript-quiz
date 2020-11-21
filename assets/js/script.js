@@ -1,3 +1,11 @@
+var quizContainer = document.getElementById('quiz');
+var question = document.getElementById("question");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+var choiceD = document.getElementById("D");
+
+
 
 
 function startCountdown () {
@@ -14,100 +22,120 @@ var countdown = setInterval(function(){
 
 
 
-function generateQuiz () {
-    showQuestions();
-        startCountdown();
-}
-
-
-//Iterate through questions
-
-function showQuestions() {
-    var output = [];
-    var correctAnswers;
-    for (i = 0; i < myQuestions.length; i++)
-
-    correctAnswer = [];
-
-}
-
-
 
 //Quiz questions and answers
-var myQuestions = [
+let myQuestions = [
 {
     //First Question & Answer
     question: "When was Javascript first introduced?",
-    choices: {
-    a: "1992",
-    b: "1995",
-    c: "1997",
-    d: "2000"
-},
-    correctAnswer: "b"
-},
-
+    choiceA: "1992",
+    choiceB: "1995",
+    choiceC: "1997",
+    choiceD: "2000",
+    correct: "b"
+}, 
 {
     //Second Question & Answer
     question: "Who created Javascript?",
-    choices: {
-    a: "Brendan Eich",
-    b: "John Resig",
-    c: "Tim Berners-Lee",
-    d: "Håkon Wium Lie"
-},
-    correctAnswer: "a"
+    choiceA: "Brendan Eich",
+    choiceB: "John Resig",
+    choiceC: "Tim Berners-Lee",
+    choiceD: "Håkon Wium Lie",
+    correct: "a"
 },
 
 {
     //Third Question & Answer
     question: "Inside which HTML element do we put the Javascript?",
-    choices: {
-    a: "<javascript>",
-    b: "<js>",
-    c: "<scripting>",
-    d: "<script>"
-},
-    correctAnswer: "d"
+    choiceA: "<javascript>",
+    choiceB: "<js>",
+    choiceC: "<scripting>",
+    choiceD: "<script>",
+    correct: "d"
 },
 
 {
     //Fourth Question & Answer
     question: "How do you declare a variable in Javascript?",
-    choices: {
-    a: "By using the word variable",
-    b: "By using parentheses",
-    c: "By using the var keyword",
-    d: "By using quotes"
-},
-    correctAnswer: "c"
+    choiceA: "By using the word variable",
+    choiceB: "By using parentheses",
+    choiceC: "By using the var keyword",
+    choiceD: "By using quotes",
+    correct: "c"
 },
 
 {
     //Fifth Question & Answer
     question: "Where is the correct place to insert Javascript in the html file?",
-    choices: {
-    a: "Iside the header section",
-    b: "At the top of the body",
-    c: "At the very bottom of the body",
-    d: "Right after the DOCTYPE tag"
-},
-    correctAnswer: "c"
+    choiceA: "Iside the header section",
+    choiceB: "At the top of the body",
+    choiceC: "At the very bottom of the body",
+    choiceD: "Right after the DOCTYPE tag",
+    correct: "c"
 }
 ];
 
 
 
-function getResults () {
+
+
+let lastQuestionIndex = myQuestions.length - 1;
+let questionIndex = 0;
+
+
+
+function renderQuestions () {
+    let q = myQuestions[questionIndex];
+    question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+
+    startCountdown();
+}
+
+function startQuiz () {
+    renderQuestions();
+    checkAnswer();
+};
+
+
+
+
+
+
+
+function checkAnswer () {
+    //var correct = myQuestions.answer
+    if (answer == correct) {
+        
+        //If answer if correct, reward score value
+        //score++;
+        startCountdown();
+    } else {
+        //answer if incorrect, subtract score value
+        (answer == !correct)
+
+    }
+
 
 }
 
-//declaring start button and adding even listener
+
+
+//function getResults () {}
+
+
+
+
+
+//declaring start button and adding event listener
 var startButton = document.getElementById('start');
-startButton.addEventListener("click", generateQuiz);
+startButton.addEventListener("click", startQuiz);
 
 
-//declaring results button and adding even listener
-var submitButton = document.getElementById('submit');
-submitButton.addEventListener("click", getResults);
+//declaring results button and adding event listener
+//var submitButton = document.getElementById('submit');
+//submitButton.addEventListener("click", getResults);
 
