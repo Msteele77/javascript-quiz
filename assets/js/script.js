@@ -6,6 +6,8 @@ var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var choice = document.getElementsByClassName("choice");
 var startPrompt = document.getElementById ("startprompt");
+var submitButton = document.getElementById("submit");
+var results = document.getElementById("results-page");
 
 
 function startCountdown () {
@@ -83,13 +85,25 @@ let lastQuestionIndex = myQuestions.length - 1;
 let questionIndex = 0;
 
 
-
 function startQuiz () {
     startPrompt.remove();
     startCountdown();
     renderQuestions();
-    checkAnswers();
+    checkAnswer();
 };
+
+//Generates Questions
+function renderQuestions () {
+    let q = myQuestions[questionIndex];
+     question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+     choiceD.innerHTML = q.choiceD;
+     
+ }
+
+ 
 
 
 function checkAnswer (value) {
@@ -100,38 +114,29 @@ function checkAnswer (value) {
     else {
     console.log("incorrect")
     }
-    //if (questionIndex < lastQuestionIndex) {
-       // lastQuestionIndex++;
-       // renderQuestions();
-    //}
+    if (questionIndex < lastQuestionIndex) {
+        console.log();
+       questionIndex++;
+       renderQuestions();
+    }
 }
    
-//Generates Questions
-function renderQuestions () {
-    let q = myQuestions[questionIndex];
-     question.innerHTML = "<p>" + q.question + "</p>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-     choiceD.innerHTML = q.choiceD;
-     //checkAnswer();
- }
+
+
 
     
 
 
+
+
+
+
 //function getResults () {}
-
-
-
-
 
 //declaring start button and adding event listener
 var startButton = document.getElementById('start');
 startButton.addEventListener("click", startQuiz);
 
-
 //declaring results button and adding event listener
 //var submitButton = document.getElementById('submit');
 //submitButton.addEventListener("click", getResults);
-
