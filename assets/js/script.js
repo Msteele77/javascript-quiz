@@ -5,7 +5,7 @@ var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var choice = document.getElementsByClassName("choice");
-
+var startPrompt = document.getElementById ("startprompt");
 
 
 function startCountdown () {
@@ -82,40 +82,42 @@ let myQuestions = [
 let lastQuestionIndex = myQuestions.length - 1;
 let questionIndex = 0;
 
-//Generates Questions
-function renderQuestions () {
-   let q = myQuestions[questionIndex];
-    question.innerHTML = "<p>" + q.question + "</p>";
-   choiceA.innerHTML = q.choiceA;
-   choiceB.innerHTML = q.choiceB;
-   choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
 
-    startCountdown();
-}
 
 function startQuiz () {
+    startPrompt.remove();
+    startCountdown();
     renderQuestions();
-    checkAnswer();
+    checkAnswers();
 };
 
 
-
-
-
-
-
-function checkAnswer () {
+function checkAnswer (value) {
     //answer is correct
-    if (this.value == myQuestions[questionIndex].correct) {
-        console.log("correct answer");
-    //answer is not correct
+   if (value === myQuestions[questionIndex].correct) {
+    console.log("correct");
     } 
-    if (this.value !== myQuestions[questionIndex].choiceA) 
-    console.log("hey");
-    
+    else {
+    console.log("incorrect")
+    }
+    //if (questionIndex < lastQuestionIndex) {
+       // lastQuestionIndex++;
+       // renderQuestions();
+    //}
 }
+   
+//Generates Questions
+function renderQuestions () {
+    let q = myQuestions[questionIndex];
+     question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+     choiceD.innerHTML = q.choiceD;
+     //checkAnswer();
+ }
 
+    
 
 
 //function getResults () {}
