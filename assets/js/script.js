@@ -4,7 +4,7 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
-
+var choice = document.getElementsByClassName("choice");
 
 
 
@@ -32,7 +32,7 @@ let myQuestions = [
     choiceB: "1995",
     choiceC: "1997",
     choiceD: "2000",
-    correct: "b"
+    correct: "choiceB"
 }, 
 {
     //Second Question & Answer
@@ -41,7 +41,7 @@ let myQuestions = [
     choiceB: "John Resig",
     choiceC: "Tim Berners-Lee",
     choiceD: "Håkon Wium Lie",
-    correct: "a"
+    correct: "choiceA"
 },
 
 {
@@ -51,7 +51,7 @@ let myQuestions = [
     choiceB: "<js>",
     choiceC: "<scripting>",
     choiceD: "<script>",
-    correct: "d"
+    correct: "choiceD"
 },
 
 {
@@ -61,17 +61,17 @@ let myQuestions = [
     choiceB: "By using parentheses",
     choiceC: "By using the var keyword",
     choiceD: "By using quotes",
-    correct: "c"
+    correct: "choiceC"
 },
 
 {
     //Fifth Question & Answer
     question: "Where is the correct place to insert Javascript in the html file?",
-    choiceA: "Iside the header section",
+    choiceA: "Inside the header section",
     choiceB: "At the top of the body",
     choiceC: "At the very bottom of the body",
     choiceD: "Right after the DOCTYPE tag",
-    correct: "c"
+    correct: "choiceC"
 }
 ];
 
@@ -82,14 +82,13 @@ let myQuestions = [
 let lastQuestionIndex = myQuestions.length - 1;
 let questionIndex = 0;
 
-
-
+//Generates Questions
 function renderQuestions () {
-    let q = myQuestions[questionIndex];
+   let q = myQuestions[questionIndex];
     question.innerHTML = "<p>" + q.question + "</p>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
+   choiceA.innerHTML = q.choiceA;
+   choiceB.innerHTML = q.choiceB;
+   choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
 
     startCountdown();
@@ -107,19 +106,14 @@ function startQuiz () {
 
 
 function checkAnswer () {
-    //var correct = myQuestions.answer
-    if (answer == correct) {
-        
-        //If answer if correct, reward score value
-        //score++;
-        startCountdown();
-    } else {
-        //answer if incorrect, subtract score value
-        (answer == !correct)
-
-    }
-
-
+    //answer is correct
+    if (this.value == myQuestions[questionIndex].correct) {
+        console.log("correct answer");
+    //answer is not correct
+    } 
+    if (this.value !== myQuestions[questionIndex].choiceA) 
+    console.log("hey");
+    
 }
 
 
