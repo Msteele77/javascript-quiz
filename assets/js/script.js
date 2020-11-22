@@ -8,7 +8,7 @@ var startPrompt = document.getElementById ("startprompt");
 var submitButton = document.getElementById("submit");
 var results = document.getElementById("results-page");
 var seconds = document.getElementById("countdown").textContent;
-
+var resultsPage = document.getElementById("results-page");
 
 
 
@@ -26,7 +26,6 @@ var countdown = setInterval(function(){
     //go to results page
 },1000);
 }
-
 
 
 //Quiz questions and answers
@@ -111,13 +110,14 @@ function checkAnswer (answer) {
     //answer is correct
    if (answer === myQuestions[questionIndex].correct) {
    score += correctscore;
+   showScore();
     console.log(score);
 } 
     else {
     //User input is incorrect
     
     seconds -= 10
-    if ("seconds" <= 0) clearInterval(countdown);
+    
     
     console.log("incorrect")
     }
@@ -128,20 +128,21 @@ function checkAnswer (answer) {
          
      questionIndex++;
      renderQuestions();
+     
       }
+      
  }
 
 
 
 
-
+//score properties
  var score = 0;
- var total = score, correctscore;
  var correctscore = 10;
 
 function showScore () {
     
-var displayscore =  document.getElementById("presentscore").textContent = "YOUR SCORE: " + total;
+var displayscore =  document.getElementById("presentscore").textContent = "YOUR SCORE: " + score;
  
 }
 
@@ -150,7 +151,10 @@ var displayscore =  document.getElementById("presentscore").textContent = "YOUR 
 
 
 
-//function getResults () {}
+function resultsPage () {
+startCountdown.remove();
+renderQuestions.remove();
+}
 
 //declaring start button and adding event listener
 var startButton = document.getElementById('start');
