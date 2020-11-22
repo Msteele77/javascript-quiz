@@ -4,10 +4,10 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
-var choice = document.getElementsByClassName("choice");
 var startPrompt = document.getElementById ("startprompt");
 var submitButton = document.getElementById("submit");
 var results = document.getElementById("results-page");
+
 
 
 function startCountdown () {
@@ -85,12 +85,7 @@ let lastQuestionIndex = myQuestions.length - 1;
 let questionIndex = 0;
 
 
-function startQuiz () {
-    startPrompt.remove();
-    startCountdown();
-    renderQuestions();
-    checkAnswer();
-};
+
 
 //Generates Questions
 function renderQuestions () {
@@ -100,26 +95,33 @@ function renderQuestions () {
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
      choiceD.innerHTML = q.choiceD;
-     
  }
 
- 
+ //When start button is clicked
+ function startQuiz () {
+    startPrompt.remove();
+    startCountdown();
+    renderQuestions();
+};
 
 
-function checkAnswer (value) {
+function checkAnswer (answer) {
     //answer is correct
-   if (value === myQuestions[questionIndex].correct) {
+   if (answer === myQuestions[questionIndex].correct) {
     console.log("correct");
+    
     } 
     else {
+
     console.log("incorrect")
     }
-    if (questionIndex < lastQuestionIndex) {
-        console.log();
-       questionIndex++;
-       renderQuestions();
-    }
-}
+
+     if (questionIndex < lastQuestionIndex) {
+     questionIndex++;
+     renderQuestions();
+      }
+ }
+
    
 
 
