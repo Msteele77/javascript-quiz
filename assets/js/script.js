@@ -5,10 +5,10 @@ var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var startPrompt = document.getElementById ("startprompt");
-var submitButton = document.getElementById("submit");
+
 var results = document.getElementById("results-page");
 var seconds = document.getElementById("countdown").textContent;
-var resultsPage = document.getElementById("results-page");
+var firstWrapper = document.getElementById("wrapper1");
 
 
 
@@ -22,10 +22,24 @@ var countdown = setInterval(function(){
     seconds--;
     ("seconds" == 1) ? document.getElementById("plural").textContent = "" : document.getElementById("plural").textContent = "s";
     document.getElementById("countdown").textContent = seconds;
-    if ("seconds" <= 0) clearInterval(countdown);
-    //go to results page
+    if (seconds <= 0) displayNew();
 },1000);
 }
+
+//clearInterval(countdown);
+
+function displayNew () {
+firstWrapper.remove();
+var secondWrapper = document.getElementById("wrapper2");
+var done = document.getElementById("done");
+secondWrapper.appendChild(done);
+var yourScore = document.getElementById("yourscore");
+secondWrapper.appendChild(yourScore);
+var final = document.getElementById("final");
+secondWrapper.appendChild(final);
+}
+
+
 
 
 //Quiz questions and answers
@@ -94,16 +108,18 @@ function renderQuestions () {
      choiceD.innerHTML = q.choiceD;
  }
 
+
+
  //When start button is clicked
  function startQuiz () {
     startPrompt.remove();
     startCountdown();
+    
     renderQuestions();
+    //firstWrapper.remove();
     showScore();
+    
 };
-
-
-
 
 
 function checkAnswer (answer) {
@@ -116,9 +132,10 @@ function checkAnswer (answer) {
     else {
     //User input is incorrect
     
+    
+    if (seconds <= 0) clearInterval(countdown);
     seconds -= 10
-    
-    
+
     console.log("incorrect")
     }
     
@@ -151,15 +168,10 @@ var displayscore =  document.getElementById("presentscore").textContent = "YOUR 
 
 
 
-function resultsPage () {
-startCountdown.remove();
-renderQuestions.remove();
-}
+
 
 //declaring start button and adding event listener
 var startButton = document.getElementById('start');
 startButton.addEventListener("click", startQuiz);
 
-//declaring results button and adding event listener
-//var submitButton = document.getElementById('submit');
-//submitButton.addEventListener("click", getResults);
+
