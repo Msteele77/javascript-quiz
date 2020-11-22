@@ -11,8 +11,12 @@ var seconds = document.getElementById("countdown").textContent;
 
 
 
-function startCountdown () {
 
+
+
+
+//Starts countdown
+function startCountdown () {
 
 var countdown = setInterval(function(){
     seconds--;
@@ -22,8 +26,6 @@ var countdown = setInterval(function(){
     //go to results page
 },1000);
 }
-
-
 
 
 
@@ -79,18 +81,12 @@ let myQuestions = [
 }
 ];
 
-
-
-
-
 let lastQuestionIndex = myQuestions.length - 1;
 let questionIndex = 0;
 
-
-
-
 //Generates Questions
 function renderQuestions () {
+    document.getElementById("display").textContent = '';
     let q = myQuestions[questionIndex];
      question.innerHTML = "<p>" + q.question + "</p>";
     choiceA.innerHTML = q.choiceA;
@@ -104,39 +100,49 @@ function renderQuestions () {
     startPrompt.remove();
     startCountdown();
     renderQuestions();
+    showScore();
 };
+
+
+
 
 
 function checkAnswer (answer) {
     //answer is correct
    if (answer === myQuestions[questionIndex].correct) {
-    console.log("correct");
-    //correctAnswer();
-    } 
+   score += correctscore;
+    console.log(score);
+} 
     else {
-    incorrectAnswer();
+    //User input is incorrect
+    
+    seconds -= 10
+    if ("seconds" <= 0) clearInterval(countdown);
+    
     console.log("incorrect")
     }
-
+    
      if (questionIndex < lastQuestionIndex) {
+        
+          
+         
      questionIndex++;
      renderQuestions();
       }
-      
  }
 
- //keeps track of score
- var start = 0;
- var answeredCorrect
 
-//correctAnswer () {
+
+
+
+ var score = 0;
+ var total = score, correctscore;
+ var correctscore = 10;
+
+function showScore () {
     
-//}
-
-
-function incorrectAnswer () {
-seconds -= 10
-
+var displayscore =  document.getElementById("presentscore").textContent = "YOUR SCORE: " + total;
+ 
 }
 
 
