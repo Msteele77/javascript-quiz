@@ -49,10 +49,10 @@ let myQuestions = [
 {
     //Third Question & Answer
     question: "Inside which HTML element do we put the Javascript?",
-    choiceA: "<javascript>",
-    choiceB: "<js>",
-    choiceC: "<scripting>",
-    choiceD: "<script>",
+    choiceA: "javascript",
+    choiceB: "js",
+    choiceC: "scripting",
+    choiceD: "script",
     correct: "choiceD"
 },
 
@@ -109,10 +109,10 @@ function checkAnswer (answer) {
     //answer is correct
    if (answer === myQuestions[questionIndex].correct) {
     console.log("correct");
-    
+    //correctAnswer();
     } 
     else {
-
+    incorrectAnswer();
     console.log("incorrect")
     }
 
@@ -122,11 +122,17 @@ function checkAnswer (answer) {
       }
  }
 
-   
+ //keeps track of score
+ var start = 0;
+ var answeredCorrect
 
+//correctAnswer () {
+    countdown--
+//}
 
-
-    
+function incorrectAnswer () {
+console.log("i not orrect");
+}
 
 
 
