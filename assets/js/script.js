@@ -5,13 +5,8 @@ var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var startPrompt = document.getElementById ("startprompt");
-
-var results = document.getElementById("results-page");
 var seconds = document.getElementById("countdown").textContent;
 var firstWrapper = document.getElementById("wrapper1");
-
-
-
 
 
 
@@ -22,22 +17,11 @@ var countdown = setInterval(function(){
     seconds--;
     ("seconds" == 1) ? document.getElementById("plural").textContent = "" : document.getElementById("plural").textContent = "s";
     document.getElementById("countdown").textContent = seconds;
-    if (seconds <= 0) displayNew();
+    if (seconds <= 0) clearInterval(countdown);
 },1000);
 }
 
-//clearInterval(countdown);
 
-function displayNew () {
-firstWrapper.remove();
-var secondWrapper = document.getElementById("wrapper2");
-var done = document.getElementById("done");
-secondWrapper.appendChild(done);
-var yourScore = document.getElementById("yourscore");
-secondWrapper.appendChild(yourScore);
-var final = document.getElementById("final");
-secondWrapper.appendChild(final);
-}
 
 
 
@@ -114,14 +98,11 @@ function renderQuestions () {
  function startQuiz () {
     startPrompt.remove();
     startCountdown();
-    
     renderQuestions();
-    //firstWrapper.remove();
     showScore();
-    
 };
 
-
+//checks user input
 function checkAnswer (answer) {
     //answer is correct
    if (answer === myQuestions[questionIndex].correct) {
@@ -131,44 +112,25 @@ function checkAnswer (answer) {
 } 
     else {
     //User input is incorrect
-    
-    
-    if (seconds <= 0) clearInterval(countdown);
     seconds -= 10
-
     console.log("incorrect")
     }
-    
-     if (questionIndex < lastQuestionIndex) {
-        
-          
-         
+     if (questionIndex < lastQuestionIndex) {  
      questionIndex++;
      renderQuestions();
-     
-      }
-      
+      }  
  }
 
 
-
+localStorage.setItem("score");
 
 //score properties
  var score = 0;
  var correctscore = 10;
 
 function showScore () {
-    
 var displayscore =  document.getElementById("presentscore").textContent = "YOUR SCORE: " + score;
- 
 }
-
-
-
-
-
-
-
 
 //declaring start button and adding event listener
 var startButton = document.getElementById('start');
