@@ -9,7 +9,6 @@ var seconds = document.getElementById("countdown").textContent;
 var firstWrapper = document.getElementById("wrapper1");
 
 
-
 //Starts countdown
 function startCountdown () {
 
@@ -122,7 +121,7 @@ function checkAnswer (answer) {
  }
 
 
-localStorage.setItem("score");
+localStorage.setItem("score", score);
 
 //score properties
  var score = 0;
