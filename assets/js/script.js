@@ -59,20 +59,20 @@ let myQuestions = [
 {
     //Fourth Question & Answer
     question: "How do you declare a variable in Javascript?",
-    choiceA: "By using the word variable",
-    choiceB: "By using parentheses",
-    choiceC: "By using the var keyword",
-    choiceD: "By using quotes",
+    choiceA: "Use word variable",
+    choiceB: "Use parentheses",
+    choiceC: "Use var keyword",
+    choiceD: "Use quotes",
     correct: "choiceC"
 },
 
 {
     //Fifth Question & Answer
     question: "Where is the correct place to insert Javascript in the html file?",
-    choiceA: "Inside the header section",
-    choiceB: "At the top of the body",
-    choiceC: "At the very bottom of the body",
-    choiceD: "Right after the DOCTYPE tag",
+    choiceA: "In header section",
+    choiceB: "Top of body",
+    choiceC: "Bottom of the body",
+    choiceD: "After DOCTYPE",
     correct: "choiceC"
 }
 ];
@@ -82,13 +82,18 @@ let questionIndex = 0;
 
 //Generates Questions
 function renderQuestions () {
+    showScore();
+    
     document.getElementById("display").textContent = '';
     let q = myQuestions[questionIndex];
      question.innerHTML = "<p>" + q.question + "</p>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
-     choiceD.innerHTML = q.choiceD;
+    choiceD.innerHTML = q.choiceD;
+      
+    
+    localStorage.setItem("score", score);
  }
 
 
@@ -98,15 +103,16 @@ function renderQuestions () {
     startPrompt.remove();
     startCountdown();
     renderQuestions();
-    showScore();
+    //checkAnswer(); 
 };
 
 //checks user input
 function checkAnswer (answer) {
     //answer is correct
    if (answer === myQuestions[questionIndex].correct) {
-   score += correctscore;
-   showScore();
+    
+    score += correctscore;
+    
     console.log(score);
 } 
     else {
@@ -114,19 +120,36 @@ function checkAnswer (answer) {
     seconds -= 10
     console.log("incorrect")
     }
+    //To continue through questions
      if (questionIndex < lastQuestionIndex) {  
      questionIndex++;
      renderQuestions();
-      }  
+      }     
  }
 
 
-localStorage.setItem("score", score);
+
+ 
+
+ //function end () {
+     //console.log("madeit");
+ //}
+
+   //if (questionIndex == 5) {
+    function complete () {
+        var finishButton = document.createElement("BUTTON");
+        finishButton.addEventListener("click", end)
+        finishButton.innerHTML = "Finished";
+        document.body.appendChild(finishButton);
+    }
+ //} 
+
 
 //score properties
  var score = 0;
  var correctscore = 10;
 
+ //displays score to page
 function showScore () {
 var displayscore =  document.getElementById("presentscore").textContent = "YOUR SCORE: " + score;
 }

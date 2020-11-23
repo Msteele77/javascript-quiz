@@ -12,7 +12,7 @@ submitButton.addEventListener("click", addScore);
 
  
 var score = localStorage.getItem(score);
-
+var scoreJSON = JSON.stringify(score);
 function addScore (event) {
     
     event.preventDefault();
