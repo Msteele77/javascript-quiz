@@ -127,20 +127,23 @@ function checkAnswer (answer) {
       }     
  }
 
+//Will need to fix and move this code
 
-
- 
-
- 
-
-   //if (questionIndex == 5) {
+  //if (questionIndex == 5) {
     function complete () {
+        console.log("hi");
         var finishButton = document.createElement("BUTTON");
         finishButton.addEventListener("click", end)
         finishButton.innerHTML = "Finished";
         document.body.appendChild(finishButton);
     }
  //} 
+
+ 
+
+ 
+
+ 
 
 
 //score properties
