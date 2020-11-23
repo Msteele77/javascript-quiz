@@ -131,9 +131,7 @@ function checkAnswer (answer) {
 
  
 
- //function end () {
-     //console.log("madeit");
- //}
+ 
 
    //if (questionIndex == 5) {
     function complete () {
