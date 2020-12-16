@@ -1,4 +1,4 @@
-var quizContainer = document.getElementById('quiz');
+// dont think i need var quizContainer = document.getElementById('quiz');
 var question = document.getElementById("question");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
@@ -19,7 +19,6 @@ var countdown = setInterval(function(){
     if (seconds <= 0) clearInterval(countdown);
 },1000);
 }
-
 
 
 
@@ -80,6 +79,7 @@ let myQuestions = [
 let lastQuestionIndex = myQuestions.length - 1;
 let questionIndex = 0;
 
+
 //Generates Questions
 function renderQuestions () {
     showScore();
@@ -92,8 +92,17 @@ function renderQuestions () {
     choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
       
+    //enter high scores here?
     
     localStorage.setItem("score", score);
+    
+    function complete () {
+        console.log("hi");
+        var finishButton = document.createElement("BUTTON");
+        finishButton.addEventListener("click", end)
+        finishButton.innerHTML = "Finished";
+        document.body.appendChild(finishButton);
+    }
  }
 
 
@@ -102,9 +111,17 @@ function renderQuestions () {
  function startQuiz () {
     startPrompt.remove();
     startCountdown();
-    renderQuestions();
-    //checkAnswer(); 
+
+
+ 
+
+
+    renderQuestions(); 
 };
+
+
+
+
 
 //checks user input
 function checkAnswer (answer) {
@@ -120,37 +137,51 @@ function checkAnswer (answer) {
     seconds -= 10
     console.log("incorrect")
     }
-    //To continue through questions
+    
+     //To continue through questions
      if (questionIndex < lastQuestionIndex) {  
-     questionIndex++;
-     renderQuestions();
-      }     
+        questionIndex++;
+        renderQuestions();
+         }  
+
  }
 
-//Will need to fix and move this code
 
-  //if (questionIndex == 5) {
-    function complete () {
-        console.log("hi");
-        var finishButton = document.createElement("BUTTON");
-        finishButton.addEventListener("click", end)
-        finishButton.innerHTML = "Finished";
-        document.body.appendChild(finishButton);
-    }
- //} 
 
  
 
  
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //score properties
  var score = 0;
  var correctscore = 10;
 
- //displays score to page
+//displays score to page
 function showScore () {
 var displayscore =  document.getElementById("presentscore").textContent = "YOUR SCORE: " + score;
 }
