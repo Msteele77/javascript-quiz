@@ -96,13 +96,7 @@ function renderQuestions () {
     
     localStorage.setItem("score", score);
     
-    function complete () {
-        console.log("hi");
-        var finishButton = document.createElement("BUTTON");
-        finishButton.addEventListener("click", end)
-        finishButton.innerHTML = "Finished";
-        document.body.appendChild(finishButton);
-    }
+    
  }
 
 
@@ -117,6 +111,7 @@ function renderQuestions () {
 
 
     renderQuestions(); 
+    checkAnswer();
 };
 
 
@@ -143,12 +138,18 @@ function checkAnswer (answer) {
         questionIndex++;
         renderQuestions();
          }  
-
+         complete();
  }
 
 
 
- 
+ function complete () {
+    console.log("hi");
+    var finishButton = document.createElement("BUTTON");
+    //finishButton.addEventListener("click", end)
+    finishButton.innerHTML = "Finished";
+    document.body.appendChild(finishButton);
+}
 
  
 
