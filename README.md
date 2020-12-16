@@ -7,10 +7,6 @@
 * https://msteele77.github.io/javascript-quiz/
 
 
-![image](https://user-images.githubusercontent.com/72512687/99931232-fcdcfd80-2d10-11eb-8272-32e3de7799cc.png)
-
-![image](https://user-images.githubusercontent.com/72512687/99931264-167e4500-2d11-11eb-93fa-ea38c2d6a2eb.png)
-
 
 ## Functionality
 
